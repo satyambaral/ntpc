@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTPC BGTPP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f4ff, #e6f0ff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .card-1 .card-icon { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .card-2 .card-icon { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .card-3 .card-icon { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .card-4 .card-icon { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .card-5 .card-icon { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .card-6 .card-icon { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .card p {
+            color: #7f8c8d;
+            line-height: 1.5;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 7px 15px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid #3498db;
+            font-size: 0.8rem;
+            margin: 0 auto;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: #3498db;
+        }
+        
+        .card-1 .btn { background: #3498db; border-color: #3498db; }
+        .card-1 .btn:hover { color: #3498db; }
+        
+        .card-2 .btn { background: #9b59b6; border-color: #9b59b6; }
+        .card-2 .btn:hover { color: #9b59b6; }
+        
+        .card-3 .btn { background: #2ecc71; border-color: #2ecc71; }
+        .card-3 .btn:hover { color: #2ecc71; }
+        
+        .card-4 .btn { background: #e74c3c; border-color: #e74c3c; }
+        .card-4 .btn:hover { color: #e74c3c; }
+        
+        .card-5 .btn { background: #f39c12; border-color: #f39c12; }
+        .card-5 .btn:hover { color: #f39c12; }
+        
+        .card-6 .btn { background: #1abc9c; border-color: #1abc9c; }
+        .card-6 .btn:hover { color: #1abc9c; }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            padding: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .menu-container {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .card-icon {
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .menu-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>NTPC BGTPP Menu</h1>
+        <p class="subtitle">Manage Efficiently</p>
+    </div>
+    
+    <div class="menu-container">
+        <!-- Card 1 -->
+        <div class="card card-1">
+            <div class="card-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="card-content">
+                <h3>Deviation Html</h3>
+                <p>Generate Deviation Html Table</p>
+                <a href="script/deviation-table.html" class="btn">Edit</a>
+            </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="card card-2">
+            <div class="card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="card-content">
+                <h3>Material</h3>
+                <p>BMD PP Material</p>
+                <a href="bmdpp" class="btn">View Portal</a>
+            </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card card-3">
+            <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-content">
+                <h3>Reports</h3>
+                <p>View performance analytics</p>
+                <a href="#" class="btn">See Reports</a>
+            </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="card card-4">
+            <div class="card-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="card-content">
+                <h3>Settings</h3>
+                <p>Configure preferences</p>
+                <a href="#" class="btn">Adjust</a>
+            </div>
+        </div>
+        
+        <!-- Card 5 -->
+        <div class="card card-5">
+            <div class="card-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="card-content">
+                <h3>Documents</h3>
+                <p>Access important files</p>
+                <a href="#" class="btn">Browse</a>
+            </div>
+        </div>
+        
+        <!-- Card 6 -->
+        <div class="card card-6">
+            <div class="card-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="card-content">
+                <h3>Alerts</h3>
+                <p>View notifications</p>
+                <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Compact Card Menu | Designed for efficiency</p>
+    </footer>
+</body>
+</html>
