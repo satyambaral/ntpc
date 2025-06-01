@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Technical Approval Form Editor</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 20px; 
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        .form-container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+        .form-group { 
+            margin-bottom: 25px; 
+        }
+        label { 
+            display: block; 
+            font-weight: 600; 
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .variation-section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .variation-header {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 15px;
+            font-weight: 600;
+        }
+        .variation-body {
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
+        .variation-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .variation-col {
+            flex: 1;
+        }
+        textarea { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            box-sizing: border-box;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+        .small-textarea { min-height: 50px; }
+        .medium-textarea { min-height: 80px; }
+        .large-textarea { min-height: 120px; }
+        .xlarge-textarea { min-height: 180px; }
+        button { 
+            padding: 12px 25px; 
+            background-color: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        button:hover { 
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section-title { 
+            font-weight: 700; 
+            margin-top: 35px; 
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            color: #3498db;
+            font-size: 18px;
+        }
+        #output-container {
+            margin-top: 40px;
+            border-top: 2px solid #3498db;
+            padding-top: 30px;
+            display: none;
+        }
+        #html-output {
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            min-height: 400px;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .secondary-button {
+            background-color: #95a5a6;
+        }
+        .secondary-button:hover {
+            background-color: #7f8c8d;
+        }
+        .success-button {
+            background-color: #27ae60;
+        }
+        .success-button:hover {
+            background-color: #219955;
+        }
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+            font-size: 15px;
+        }
+        .sn-label {
+            display: inline-block;
+            width: 30px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        @media (max-width: 768px) {
+            .variation-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Technical Approval Form Editor</h1>
+        <div class="instructions">
+            <strong>Instructions:</strong> Edit any field below. Line breaks will be converted to &lt;br/&gt; tags in the output. 
+            All variation fields are now editable. Click "Generate HTML" when finished to get your updated table code.
+        </div>
+        
+        <form id="approval-form">
+            
+            <div class="section-title">Main Title</div>
+            <div class="form-group">
+                <label for="main-title">Technical Approval of Post Award variation</label>
+                <textarea id="main-title" class="medium-textarea"> ('Interim Deviation'/ 'Final Deviation'/ 'Final Deviation with Final Time Extension')  </textarea>
+            </div>
+            
+            <div class="section-title">1. Details of Purchase Order (PO)</div>
+            <div class="form-group">
+                <label for="work-name">(i) Name of Work</label>
+                <textarea id="work-name" class="large-textarea">Short term service contract for for On-Line Leak Sealing for Boiler & TG & Other Auxiliary Areas at BgTPS (3x250MW).</textarea>
+            </div>
+            <div class="form-group">
+                <label for="project-name">(ii) Name of Project</label>
+                <textarea id="project-name" class="medium-textarea">Bongaigaon Thermal Power Project</textarea>
+            </div>
+            <div class="form-group">
+                <label for="po-details">(iii) PO No. & date</label>
+                <textarea id="po-details" class="medium-textarea">4000354058 Dated: 24.02.2025</textarea>
+            </div>
+            <div class="form-group">
+                <label for="po-value">(iv) PO Value (Original Awarded)</label>
+                <textarea id="po-value" class="medium-textarea">INR 438,348.85</textarea>
+            </div>
+            <div class="form-group">
+                <label for="contractor">(v) Name of Agency/ Contractor</label>
+                <textarea id="contractor" class="medium-textarea">M/s NICCO ENGINEERING SERVICES LTD</textarea>
+            </div>
+            <div class="form-group">
+                <label for="start-date">(vi) Date of Start (Scheduled)</label>
+                <textarea id="start-date" class="medium-textarea">04.03.2025 - as per PO</textarea>
+            </div>
+            <div class="form-group">
+                <label for="completion-date">(vii) Date of completion (Scheduled/ Actual)</label>
+                <textarea id="completion-date" class="large-textarea">Schedule 03.06.2025 - as per PO
+Actual 03.06.2025 (If Completed)</textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">(viii) Location of processing of award</label>
+                <textarea id="location" class="medium-textarea">CPG-1/ CPG-2/ CPG-3/ SSC/ Site </textarea>
+            </div>
+            <div class="form-group">
+                <label for="tendering-mode">(ix) Mode of Tendering</label>
+                <textarea id="tendering-mode" class="medium-textarea">OT/ LT/ ST </textarea>
+            </div>
+            
+            <div class="section-title">2. Details of subsequent Amendment</div>
+            <div class="form-group">
+                <textarea id="amendment-details" class="medium-textarea">(i)Interim Deviation PO Version 1
+(ii)Time Extension PO Version 2
+                </textarea>
+            </div>
+            
+            <div class="section-title">3. Type for TA</div>
+            <div class="form-group">
+                <textarea id="ta-type" class="medium-textarea">Quantity Variation/ New Items/ Substitutes items/ Final Time Extension 
+
+(Interim Deviation/ Final Deviation/ Final Deviation with Final Time Extension) </textarea>
+            </div>
+            
+            <div class="section-title">4. Relevant Contract provision w.r.t. Deviation</div>
+            <div class="form-group">
+                <textarea id="contract-provision" class="xlarge-textarea">(i) Deviation Limit - ........... (as per Clause No..... of GCC/ SCC/ PO) 
+
+(ii) Reference of Restricted quantities in PO, if any 
+
+(iii)Reference of provision w.r.t. 'Liquidated Damage for delay' - if proposal includes aspect of LD 
+
+(iv) Any other relevant provisions [Ref. of PO/ GCC/ SCC etc.] </textarea>
+            </div>
+            
+            <div class="section-title">5. Reason/analysis of changes proposed Technical Proposal & recommendation</div>
+            <div class="form-group">
+                <textarea id="reason-analysis" class="xlarge-textarea">The PR for the Biennial Service Contract for On-Line Leak Sealing for Boiler, TG, and Other Auxiliary Areas at BgTPS (3x250MW) has been raised and is currently in the approval stage. A time extension is required to ensure uninterrupted emergency leak sealing work.
+
+<b>Enclosures:</b>
+(i) Vendor Concent Email in pdf Format
+(ii) Rate analysis (as per provisions of Contract) for items deviating beyond deviation limit/ new items/ substituted items  
+(iii) Delay analysis with calculation of LD amount – if proposal includes 'Final Time Extension' </textarea>
+            </div>
+            
+            <div class="section-title">6. Recommendation</div>
+            <div class="form-group">
+                <textarea id="recommendation" class="xlarge-textarea"><b>Proposed changes in Contract - Technical Approval</b>
+*Proposed Contract value: ............
+*Proposed Extension in Completion period (if applicable): 
+  #Extension in Completion period Where delay is attributable to the Contractor: 
+  #Extension in Completion period Where delay is not attributable to the Contractor: 
+  #Proposed LD Amount: </textarea>
+            </div>
+            
+            <div class="section-title"><b>7. Details of Gross cumulative variations</b></div>
+            <div class="variation-section">
+                <div class="variation-header">(i) Gross cumulative variation on composite basis till last Amendment, if any</div>
+                <div class="variation-body">
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. within variation limit</label>
+                            <textarea class="small-textarea" id="variation-within-limit-i">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-percent-i">0</textarea>
+                        </div>
+                    </div>
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. beyond variation/ new/ substituted items</label>
+                            <textarea class="small-textarea" id="variation-beyond-limit-i">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-beyond-percent-i">0</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variation-section">
+                <div class="variation-header">(ii) Gross variation on composite basis - in Present Proposal</div>
+                <div class="variation-body">
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. within variation limit</label>
+                            <textarea class="small-textarea" id="variation-within-limit-ii">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-percent-ii">0</textarea>
+                        </div>
+                    </div>
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. beyond variation/ new/ substituted items</label>
+                            <textarea class="small-textarea" id="variation-beyond-limit-ii">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-beyond-percent-ii">0</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variation-section">
+                <div class="variation-header">(iii) Gross cumulative variation on composite basis – including present Proposal</div>
+                <div class="variation-body">
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. within variation limit</label>
+                            <textarea class="small-textarea" id="variation-within-limit-iii">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-percent-iii">0</textarea>
+                        </div>
+                    </div>
+                    <div class="variation-row">
+                        <div class="variation-col">
+                            <label>w.r.t. beyond variation/ new/ substituted items</label>
+                            <textarea class="small-textarea" id="variation-beyond-limit-iii">0</textarea>
+                        </div>
+                        <div class="variation-col">
+                            <label>% variation on composite basis</label>
+                            <textarea class="small-textarea" id="variation-beyond-percent-iii">0</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">8. Approving authority for Technical Approval</div>
+            <div class="form-group">
+                <label>For items within the variation limit provided in the contract</label>
+                <textarea id="approving-within-limit" class="large-textarea">SM as per Sec. II, Clause 8.1 (a) of DOP 2023</textarea>
+            </div>
+            <div class="form-group">
+                <label>For items beyond the variation limit</label>
+                <textarea id="approving-beyond-limit" class="medium-textarea">NA</textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" onclick="generateUpdatedHtml()">Generate HTML</button>
+                <button type="button" class="secondary-button" onclick="resetForm()">Reset Form</button>
+                <a href="../"><button type="button" class="secondary-button" >Home</button></a>
+            </div>
+        </form>
+        
+        <div id="output-container">
+            <h2>Updated HTML Output</h2>
+            <div class="button-group">
+                <button onclick="copyToClipboard()" class="success-button">Copy to Clipboard</button>
+                <button onclick="downloadHtml()">Download HTML File</button>
+                <button class="secondary-button" onclick="hideOutput()">Hide Output</button>
+            </div>
+            <textarea id="html-output" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        // Format text with line breaks converted to <br/> tags
+        function formatText(text) {
+            if (!text) return '';
+            return text.split('\n').filter(line => line.trim() !== '').join('<br/>');
+        }
+
+        // Generate the HTML table with current form values
+        function generateUpdatedHtml() {
+            // Get all form values
+            const values = {
+                'main-title': document.getElementById('main-title').value,
+                'work-name': document.getElementById('work-name').value,
+                'project-name': document.getElementById('project-name').value,
+                'po-details': document.getElementById('po-details').value,
+                'po-value': document.getElementById('po-value').value,
+                'contractor': document.getElementById('contractor').value,
+                'start-date': document.getElementById('start-date').value,
+                'completion-date': document.getElementById('completion-date').value,
+                'location': document.getElementById('location').value,
+                'tendering-mode': document.getElementById('tendering-mode').value,
+                'amendment-details': document.getElementById('amendment-details').value,
+                'ta-type': document.getElementById('ta-type').value,
+                'contract-provision': document.getElementById('contract-provision').value,
+                'reason-analysis': document.getElementById('reason-analysis').value,
+                'recommendation': document.getElementById('recommendation').value,
+                'approving-within-limit': document.getElementById('approving-within-limit').value,
+                'approving-beyond-limit': document.getElementById('approving-beyond-limit').value,
+                // Variation fields
+                'variation-within-limit-i': document.getElementById('variation-within-limit-i').value,
+                'variation-percent-i': document.getElementById('variation-percent-i').value,
+                'variation-beyond-limit-i': document.getElementById('variation-beyond-limit-i').value,
+                'variation-beyond-percent-i': document.getElementById('variation-beyond-percent-i').value,
+                'variation-within-limit-ii': document.getElementById('variation-within-limit-ii').value,
+                'variation-percent-ii': document.getElementById('variation-percent-ii').value,
+                'variation-beyond-limit-ii': document.getElementById('variation-beyond-limit-ii').value,
+                'variation-beyond-percent-ii': document.getElementById('variation-beyond-percent-ii').value,
+                'variation-within-limit-iii': document.getElementById('variation-within-limit-iii').value,
+                'variation-percent-iii': document.getElementById('variation-percent-iii').value,
+                'variation-beyond-limit-iii': document.getElementById('variation-beyond-limit-iii').value,
+                'variation-beyond-percent-iii': document.getElementById('variation-beyond-percent-iii').value
+            };
+
+            // Generate the HTML
+            const html = `<table style="border-collapse: collapse; width: 100%;" border="1" align="center">
+<tbody>
+<tr>
+<td style="width: 100%; border-style: solid; border-color: #000000;" colspan="6" width="811" align="center"><b>Technical Approval of Post Award variation<br/>${formatText(values['main-title'])}</b></td>
+</tr>
+<tr>
+<td align="center" style="width: 2%" rowspan="10"><b>1</b></td>
+<td style="width: 98%;" colspan="5" width="747"><b>Details of Purchase Order (PO)</b></td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(i) Name of Work</td>
+<td style="width: 63%;" colspan="3">${formatText(values['work-name'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(ii) Name of Project</td>
+<td style="width: 63%;" colspan="3">${formatText(values['project-name'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(iii) PO No. & date</td>
+<td style="width: 63%;" colspan="3">${formatText(values['po-details'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(iv) PO Value (Original Awarded)</td>
+<td style="width: 63%;" colspan="3">${formatText(values['po-value'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(v) Name of Agency/ Contractor</td>
+<td style="width: 35%" colspan="3">${formatText(values['contractor'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(vi) Date of Start (Scheduled)</td>
+<td style="width: 63%;" colspan="3">${formatText(values['start-date'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(vii) Date of completion (Scheduled/ Actual)</td>
+<td style="width: 63%;" colspan="3">${formatText(values['completion-date'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(viii) Location of processing of award</td>
+<td style="width: 63%;" colspan="3">${formatText(values['location'])}</td>
+</tr>
+<tr>
+<td style="width: 35%" colspan="2">(ix) Mode of Tendering</td>
+<td style="width: 63%;" colspan="3">${formatText(values['tendering-mode'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%"><b>2</b></td>
+<td style="width: 35%;" colspan="2"><b>Details of subsequent Amendment (if any) ; including Time extension</b></td>
+<td style="width: 63%" colspan="3">${formatText(values['amendment-details'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%"><b>3</b></td>
+<td style="width: 35%;" colspan="2"><b>Type for TA</b></td>
+<td style="width: 63%" colspan="3">${formatText(values['ta-type'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%"><b>4</b></td>
+<td style="width: 35%;" colspan="2"><b>Relevant Contract provision w.r.t. Deviation</b></td>
+<td style="width: 63%" colspan="3" width="246">${formatText(values['contract-provision'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%" rowspan="2"><b>5</b></td>
+<td style="width: 98%" colspan="5"><b>Reason/ analysis of changes proposed Technical Proposal & recommendation</b></td>
+</tr>
+<tr>
+<td style="width: 98%;" colspan="5">${formatText(values['reason-analysis'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%" rowspan="2"><b>6</b></td>
+<td style="width: 98%;" colspan="5"><b>Recommendation:</b></td>
+</tr>
+<tr>
+<td style="width: 98%;" colspan="5">${formatText(values['recommendation'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%" rowspan="8"><b>7</b></td>
+<td style="width: 98%;" colspan="5">Details of Gross cumulative variations with respect to Initial Contract Price, on composite basis:</td>
+</tr>
+<tr>
+<td style="width: 2%" align="center"><b>SN.</b></td>
+<td style="width: 30%" align="center"><b>Description</b></td>
+<td style="width: 30%" align="center"><b>DOP Clause Ref. No.</b></td>
+<td style="width: 18%" align="center"><b>Total Amount of variation</b></td>
+<td style="width: 18%" align="center"><b>% variation on composite basis</b></td>
+</tr>
+<tr>
+<td style="width: 2%" align="center" rowspan="2">(i)</td>
+<td style="width: 30%" rowspan="2">Gross cumulative variation on composite basis till last Amendment, if any</td>
+<td style="width: 30%">w.r.t. within variation limit</td>
+<td style="width: 18%" align="center">${formatText(values['variation-within-limit-i'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-percent-i'])}</td>
+</tr>
+<tr>
+<td style="width: 30%">w.r.t. beyond variation/ new/ substituted items</td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-limit-i'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-percent-i'])}</td>
+</tr>
+<tr>
+<td style="width: 2%" align="center" rowspan="2">(ii)</td>
+<td style="width: 30%" rowspan="2">Gross variation on composite basis - in Present Proposal</td>
+<td style="width: 30%">w.r.t. within variation limit</td>
+<td style="width: 18%" align="center">${formatText(values['variation-within-limit-ii'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-percent-ii'])}</td>
+</tr>
+<tr>
+<td style="width: 30%">w.r.t. beyond variation/ new/ substituted items</td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-limit-ii'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-percent-ii'])}</td>
+</tr>
+<tr>
+<td style="width: 2%" align="center" rowspan="2">(iii)</td>
+<td style="width: 30%" rowspan="2"><b>Gross cumulative variation on composite basis &ndash; including present Proposal</b></td>
+<td style="width: 30%"><b>w.r.t. within variation limit</b></td>
+<td style="width: 18%" align="center">${formatText(values['variation-within-limit-iii'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-percent-iii'])}</td>
+</tr>
+<tr>
+<td style="width: 30%"><b>w.r.t. beyond variation/ new/ substituted items</b></td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-limit-iii'])}</td>
+<td style="width: 18%" align="center">${formatText(values['variation-beyond-percent-iii'])}</td>
+</tr>
+<tr>
+<td align="center" style="width: 2%" rowspan="3"><b>8</b></td>
+<td style="width: 98%;" colspan="5"><b>Approving authority for Technical Approval (Variations during post award execution of contracts)</b> - Gross cumulative variation on composite basis including present Proposal [refer 7 (iii) above]:</td>
+</tr>
+<tr>
+<td style="width: 35%;" colspan="2">For items within the variation limit provided in the contract</td>
+<td style="width: 63%;" colspan="3">${formatText(values['approving-within-limit'])}</td>
+</tr>
+<tr>
+<td style="width: 35%;" colspan="2">For items beyond the variation limit provided in the contract (including new items /substituted items)</td>
+<td style="width: 63%;" colspan="3" align="center">${formatText(values['approving-beyond-limit'])}</td>
+</tr>
+</tbody>
+</table>
+<br/>`;
+
+            // Display the generated HTML
+            const outputContainer = document.getElementById('output-container');
+            const htmlOutput = document.getElementById('html-output');
+            htmlOutput.value = html;
+            outputContainer.style.display = 'block';
+            
+            // Scroll to the output
+            outputContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard() {
+            const outputText = document.getElementById('html-output');
+            outputText.select();
+            document.execCommand('copy');
+            
+            // Visual feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.backgroundColor = '#27ae60';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.backgroundColor = '#219955';
+            }, 2000);
+        }
+
+        function downloadHtml() {
+            const htmlOutput = document.getElementById('html-output').value;
+            const blob = new Blob([htmlOutput], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'technical_approval.html';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all fields to their original values?')) {
+                document.getElementById('approval-form').reset();
+            }
+        }
+
+        function hideOutput() {
+            document.getElementById('output-container').style.display = 'none';
+        }
+
+        // Initialize with output hidden
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('output-container').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
